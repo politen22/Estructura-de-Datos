@@ -1,17 +1,17 @@
-class ArrayStackExt(ArrayStack):
-    def __init__(self, maxlen=None):
-        super().__init__()
-        self._maxlen = maxlen
-    
-    def push(self, e):
-        if self._maxlen is not None and len(self._data) >= self._maxlen:
-            raise Exception("Capacidad de la pila excedida")
-        super().push(e)
+from cuit import verificar_cuit
 
+# Números de CUIT/CUIL para probar
+cuits = [
+    '30-56225215-7', 
+    '27-38426233-9',
+    '23-33016244-9',
+    'A0-330B6244-C',
+    '30562252157'  ,
+    '305622157'    ,
+]
 
-
-stack = ArrayStackExt(maxlen=3)
-stack.push(1)
-stack.push(2)
-stack.push(3)
-stack.push(4) # Lanza excepción: Capacidad de la pila excedida
+for cuit in cuits:
+    if verificar_cuit(cuit):
+        print(f'{cuit} es un CUIT/CUIL válido')
+    else:
+        print(f'{cuit} no es un CUIT/CUIL válido')
