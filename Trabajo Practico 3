@@ -1,0 +1,17 @@
+class ArrayStackExt(ArrayStack):
+    def __init__(self, maxlen=None):
+        super().__init__()
+        self._maxlen = maxlen
+    
+    def push(self, e):
+        if self._maxlen is not None and len(self._data) >= self._maxlen:
+            raise Exception("Capacidad de la pila excedida")
+        super().push(e)
+
+
+
+stack = ArrayStackExt(maxlen=3)
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4) # Lanza excepción: Capacidad de la pila excedida
